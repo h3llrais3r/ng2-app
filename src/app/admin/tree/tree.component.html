@@ -1,0 +1,13 @@
+<h3>Tree</h3>
+<p-tree [value]="files" selectionMode="multiple" [(selection)]="selectedFiles" (onNodeSelect)="nodeSelect($event)"></p-tree>
+
+<h3>Multiple Selection with Checkbox</h3>
+<p-tree [value]="files" selectionMode="checkbox" [(selection)]="selectedFiles2"></p-tree>
+<div>Selected Nodes: <span *ngFor="let file of selectedFiles2">{{file.label}} </span></div>
+
+<h3>Template</h3>
+<p-tree #expandingTree [value]="filesTemplate">
+    <template let-node pTemplate type="default">
+        <input [(ngModel)]="node.label" type="text" style="width:100%">
+    </template>
+</p-tree>
