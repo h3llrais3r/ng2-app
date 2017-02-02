@@ -1,6 +1,6 @@
 <h3>fileupload</h3>
 
-<div class="filedrag" (drop)="onDrop($event)" (dragover)="onDragOver($event)" (click)="onTriggerFileUpload($event)">
+<div class="filedrag" (drop)="onDrop($event)" (dragover)="onDragOver($event)" (dragleave)="onDragLeave($event)" (click)="onTriggerFileUpload($event)">
     <div class="box">
         <i class="fa fa-upload fa-5x" aria-hidden="true"></i>
         <br>

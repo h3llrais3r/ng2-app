@@ -14,6 +14,10 @@
 }
 
 .filedrag:hover {
+    border-style: solid;
+}
+
+.filedrag.dragover {
     color: #f00;
     border-color: #f00;
     border-style: solid;

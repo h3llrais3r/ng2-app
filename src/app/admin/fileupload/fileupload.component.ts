@@ -16,16 +16,13 @@ export class FileuploadComponent implements OnInit {
   private uploadError = false;
   private uploadSuccess = false;
 
+  private fileUploadItem: FileUploadItem;
+
   constructor(private uploader: Uploader) { }
 
   ngOnInit() {
-    // init interval for progress bar
-    let interval = setInterval(() => {
-      if (this.uploadPercentage >= 100) {
-        this.uploadPercentage = 100;
-        clearInterval(interval);
-      }
-    }, 500);
+    // init uploader
+    this.initUploader();
   }
 
   onTriggerFileUpload(event) {
@@ -36,51 +33,75 @@ export class FileuploadComponent implements OnInit {
     // prevent event propagation
     event.preventDefault();
     event.stopPropagation();
+    // add dragover style
+    $(".filedrag").addClass("dragover");
+  }
+
+  onDragLeave(event: any) {
+    // prevent event propagation
+    event.preventDefault();
+    event.stopPropagation();
+    // remove dragover style
+    $(".filedrag").removeClass("dragover");
   }
 
   onDrop(event: any) {
     // prevent event propagation
     event.preventDefault();
     event.stopPropagation();
+    // remove dragover style
+    $(".filedrag").removeClass("dragover");
     // file upload
     this.onFileUpload(event);
   }
 
   onFileUpload(event) {
-    console.log("onfileupload");
+    // reset flags
     this.reset();
-
     //let uploadFile = (<HTMLInputElement>window.document.getElementById('fileUpload')).files[0];
     let uploadFiles = event.target.files || event.dataTransfer.files;
-
     let uploadFile = uploadFiles[0];
-
-    let myUploadItem = new FileUploadItem(uploadFile);
+    this.fileUploadItem = new FileUploadItem(uploadFile);
     //myUploadItem.formData = { FormDataKey: 'Form Data Value' };  // (optional) form data can be sent with file
+    // start upload
+    this.startUpload();
+  }
 
+  private initUploader() {
+    // success callback
     this.uploader.onSuccessUpload = (item, response, status, headers) => {
-      // success callback
       this.uploadSuccess = true;
     };
+    // error callback
     this.uploader.onErrorUpload = (item, response, status, headers) => {
-      // error callback
       this.uploadError = true;
     };
+    // complete callback, called regardless of success or failure
     this.uploader.onCompleteUpload = (item, response, status, headers) => {
-      // complete callback, called regardless of success or failure
       this.uploadPercentage = 0;
       this.uploadInProgress = false;
     };
+    // progress callback
     this.uploader.onProgressUpload = (item, percentComplete) => {
-      // progress callback
       this.uploadPercentage = percentComplete;
     };
+  }
 
+  private startUpload(): void {
+    // start progress bar
     this.uploadInProgress = true;
-    this.uploader.upload(myUploadItem);
+    let interval = setInterval(() => {
+      if (this.uploadPercentage >= 100) {
+        this.uploadPercentage = 100;
+        clearInterval(interval);
+      }
+    }, 500);
+    // upload
+    this.uploader.upload(this.fileUploadItem);
   }
 
   private reset() {
+    this.fileUploadItem = null;
     this.uploadPercentage = 0;
     this.uploadInProgress = false;
     this.uploadError = false;
