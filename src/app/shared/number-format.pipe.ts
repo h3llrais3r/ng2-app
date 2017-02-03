@@ -6,9 +6,7 @@ import { DecimalPipe } from '@angular/common';
 })
 export class NumberFormatPipe implements PipeTransform {
 
-    constructor() {
-        console.log('constructor pipe');
-    }
+    constructor() { }
 
     transform(value: any, digits?: string, locale: string = 'nl-BE'): string {
         // safe guard for non value
