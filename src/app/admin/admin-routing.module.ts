@@ -17,6 +17,10 @@ const routes: Routes = [
         loadChildren: 'app/admin/fileupload/fileupload.module#FileuploadModule' // Lazy loading
     },
     {
+        path: 'ng2-bootstrap',
+        loadChildren: 'app/admin/ng2-bootstrap/ng2-bootstrap.module#Ng2BootstrapModule' // Lazy loading
+    },
+    {
         path: 'tree',
         loadChildren: 'app/admin/tree/tree.module#TreeModule' // Lazy loading
     }
