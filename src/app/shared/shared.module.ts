@@ -3,14 +3,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
-import {CurrencyFormatPipe} from './currency-format.pipe';
-import {NumberFormatPipe} from './number-format.pipe';
+import { CurrencyFormatPipe } from './currency-format.pipe';
+import { NumberFormatPipe } from './number-format.pipe';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    HttpModule
   ],
   declarations: [
     CurrencyFormatPipe,
@@ -19,6 +21,7 @@ import {NumberFormatPipe} from './number-format.pipe';
   exports: [
     CommonModule,
     FormsModule,
+    HttpModule,
     CurrencyFormatPipe,
     NumberFormatPipe
   ],
