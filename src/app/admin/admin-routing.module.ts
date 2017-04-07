@@ -13,8 +13,8 @@ const routes: Routes = [
         loadChildren: 'app/admin/fileupload/fileupload.module#FileuploadModule' // Lazy loading
     },
     {
-        path: 'ng2-bootstrap',
-        loadChildren: 'app/admin/ng2-bootstrap/ng2-bootstrap.module#Ng2BootstrapModule' // Lazy loading
+        path: 'ngx-bootstrap',
+        loadChildren: 'app/admin/ng2-bootstrap/ngx-bootstrap.module#NgxBootstrapModule' // Lazy loading
     },
     {
         path: 'primeng',
