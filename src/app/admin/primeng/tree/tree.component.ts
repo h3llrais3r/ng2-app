@@ -28,17 +28,17 @@ export class TreeComponent implements OnInit {
   constructor(private http: Http) { }
 
   ngOnInit() {
-    this.http.get('app/admin/primeng/tree/data.json')
+    this.http.get('assets/data/primeng/tree/data.json')
       .map(res => <TreeNode[]>res.json().data)
       .subscribe(response => {
         this.files = response;
       });
-    this.http.get('app/admin/primeng/tree/data.json')
+    this.http.get('assets/data/primeng/tree/data.json')
       .map(res => <TreeNode[]>res.json().data)
       .subscribe(response => {
         this.filesTemplate = response;
       });
-    this.http.get('app/admin/primeng/tree/data2.json')
+    this.http.get('assets/data/primeng/tree/data2.json')
       .map(res => <TreeNode[]>res.json().data)
       .subscribe(response => {
         this.filesTable = response;
