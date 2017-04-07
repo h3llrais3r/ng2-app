@@ -80,7 +80,6 @@ export class FileuploadComponent implements OnInit {
     this.uploader.onCompleteUpload = (item, response, status, headers) => {
       this.uploadPercentage = 0;
       this.uploadInProgress = false;
-      console.log(item.file);
     };
     // progress callback
     this.uploader.onProgressUpload = (item, percentComplete) => {
