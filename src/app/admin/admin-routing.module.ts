@@ -14,7 +14,7 @@ const routes: Routes = [
     },
     {
         path: 'ngx-bootstrap',
-        loadChildren: 'app/admin/ng2-bootstrap/ngx-bootstrap.module#NgxBootstrapModule' // Lazy loading
+        loadChildren: 'app/admin/ngx-bootstrap/ngx-bootstrap.module#NgxBootstrapModule' // Lazy loading
     },
     {
         path: 'primeng',
