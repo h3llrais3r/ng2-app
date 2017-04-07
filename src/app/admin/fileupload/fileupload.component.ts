@@ -12,11 +12,11 @@ declare var $; // declare jquery
 export class FileuploadComponent implements OnInit {
 
   private uploadPercentage: number = 0;
-  private uploadInProgress = false;
   private uploadError = false;
   private uploadSuccess = false;
 
-  private fileUploadItem: FileUploadItem;
+  public uploadInProgress = false;
+  public fileUploadItem: FileUploadItem;
 
   constructor(private uploader: Uploader) { }
 
@@ -80,6 +80,7 @@ export class FileuploadComponent implements OnInit {
     this.uploader.onCompleteUpload = (item, response, status, headers) => {
       this.uploadPercentage = 0;
       this.uploadInProgress = false;
+      console.log(item.file);
     };
     // progress callback
     this.uploader.onProgressUpload = (item, percentComplete) => {

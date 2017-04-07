@@ -9,3 +9,13 @@
         <p-progressBar *ngIf="uploadInProgress" [value]="uploadPercentage"></p-progressBar>
     </div>
 </div>
+
+<div *ngIf="fileUploadItem">
+    <div>Uploaded file:</div>
+    <div>
+        <ul>
+            <li>Name: {{fileUploadItem.file.name}}</li>
+            <li>Size: {{fileUploadItem.file.size}} bytes</li>
+        </ul>
+    </div>
+</div>
