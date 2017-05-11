@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Angulartics2 } from 'angulartics2';
 import { Uploader } from 'angular2-http-file-upload';
 import { FileUploadItem } from './fileupload-item';
 
@@ -18,10 +19,14 @@ export class FileuploadComponent implements OnInit {
   public uploadInProgress = false;
   public fileUploadItem: FileUploadItem;
 
-  constructor(private uploader: Uploader) { }
+  constructor(private angulartics2: Angulartics2, private uploader: Uploader) { }
 
   ngOnInit() {
-    // init uploader
+    this.angulartics2.eventTrack.next({
+      action: 'fileuploadAction',
+      properties: { category: 'fileuploadCategory', label: 'fileuploadLabel' }
+    });
+    
     this.initUploader();
   }
 

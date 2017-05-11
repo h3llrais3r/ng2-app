@@ -1,4 +1,5 @@
-import { Component, OnInit, LOCALE_ID } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Angulartics2 } from 'angulartics2';
 
 @Component({
   selector: 'app-admin',
@@ -10,13 +11,16 @@ export class AdminComponent implements OnInit {
   mynumber: number;
   mynumberstring: string;
 
-  constructor() {
+  constructor(private angulartics2: Angulartics2) {
     this.mynumber = 1234567.23;
     this.mynumberstring = '1234567.23';
-    console.log(LOCALE_ID);
-   }
+  }
 
   ngOnInit() {
+    this.angulartics2.eventTrack.next({
+      action: 'adminAction',
+      properties: { category: 'adminCategory', label: 'adminLabel' }
+    });
   }
 
 }
