@@ -3,6 +3,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Angulartics2Module, Angulartics2GoogleTagManager } from 'angulartics2';
+import { CoreService } from './core.service';
 
 @NgModule({
   imports: [
@@ -11,6 +12,8 @@ import { Angulartics2Module, Angulartics2GoogleTagManager } from 'angulartics2';
   ],
   declarations: [],
   exports: [],
-  providers: []
+  providers: [
+    CoreService
+  ]
 })
 export class CoreModule { }
