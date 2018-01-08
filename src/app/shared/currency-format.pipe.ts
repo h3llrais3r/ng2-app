@@ -6,7 +6,7 @@ import { CurrencyPipe } from '@angular/common';
 })
 export class CurrencyFormatPipe implements PipeTransform {
 
-    transform(value: any, currencyCode: string = 'EUR', symbolDisplay: boolean = true, digits?: string, locale: string = 'nl-BE'): string {
+    transform(value: any, currencyCode: string = 'EUR', symbolDisplay: 'symbol', digits?: string, locale: string = 'nl-BE'): string {
         // safe guard for non value
         if (!value) {
             return '';

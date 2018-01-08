@@ -6,7 +6,7 @@
     <button type="button" class="btn btn-primary" popover="Content" popoverTitle="Dismissible popover" triggers="focus" placement="right">Dismissable</button>
 
     <h3>Dynamic content</h3>
-    <template #popTemplate>{{content}}</template>
+    <ng-template #popTemplate>{{content}}</ng-template>
     <button type="button" class="btn btn-primary" [popover]="popTemplate" popoverTitle="Template ref content inside" placement="right">TemplateRef binding</button>
 
 </div>

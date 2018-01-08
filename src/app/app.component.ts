@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Angulartics2GoogleTagManager } from 'angulartics2';
+import { Angulartics2GoogleTagManager } from 'angulartics2/gtm';
 
 import { CoreService } from './core/core.service';
 

@@ -1,18 +1,23 @@
 // Use this to load shared modules
 // https://angular.io/docs/ts/latest/guide/ngmodule.html#!#shared-module
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
 
 import { CurrencyFormatPipe } from './currency-format.pipe';
 import { NumberFormatPipe } from './number-format.pipe';
 
+// Register custom locales
+import localeNl from '@angular/common/locales/nl';
+import localeNlExtra from '@angular/common/locales/extra/nl';
+registerLocaleData(localeNl, 'nl-BE', localeNlExtra);
+
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule,
-    HttpModule
+    HttpClientModule,
+    FormsModule
   ],
   declarations: [
     CurrencyFormatPipe,
@@ -20,8 +25,8 @@ import { NumberFormatPipe } from './number-format.pipe';
   ],
   exports: [
     CommonModule,
+    HttpClientModule,
     FormsModule,
-    HttpModule,
     CurrencyFormatPipe,
     NumberFormatPipe
   ],

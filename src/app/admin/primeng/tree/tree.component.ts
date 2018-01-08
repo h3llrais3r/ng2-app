@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Tree, TreeNode } from 'primeng/primeng';
 import 'rxjs/add/operator/map';
 
@@ -25,28 +25,23 @@ export class TreeComponent implements OnInit {
   @ViewChild('expandingTree')
   expandingTree: Tree;
 
-  constructor(private http: Http) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit() {
-    this.http.get('assets/data/primeng/tree/data.json')
-      .map(res => <TreeNode[]>res.json().data)
-      .subscribe(response => {
-        this.files = response;
-      });
-    this.http.get('assets/data/primeng/tree/data.json')
-      .map(res => <TreeNode[]>res.json().data)
-      .subscribe(response => {
-        this.filesTemplate = response;
-      });
-    this.http.get('assets/data/primeng/tree/data2.json')
-      .map(res => <TreeNode[]>res.json().data)
-      .subscribe(response => {
-        this.filesTable = response;
-      });
+    this.http.get<any>('assets/data/primeng/tree/data.json')
+      .subscribe(response => this.files = <TreeNode[]>response.data);
+    this.http.get<any>('assets/data/primeng/tree/data.json')
+      .subscribe(response => this.filesTemplate = <TreeNode[]>response.data);
+    this.http.get<any>('assets/data/primeng/tree/data2.json')
+      .subscribe(response => this.filesTable = <TreeNode[]>response.data);
   }
 
   nodeSelect(event) {
     console.log("selection event:" + event);
+  }
+
+  nodeUnselect(event) {
+    console.log("unselection event:" + event);
   }
 
 }

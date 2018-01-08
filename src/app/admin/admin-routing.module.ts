@@ -8,10 +8,10 @@ const routes: Routes = [
         path: '',
         component: AdminComponent
     },
-    {
+    /*{
         path: 'fileupload',
         loadChildren: 'app/admin/fileupload/fileupload.module#FileuploadModule' // Lazy loading
-    },
+    },*/
     {
         path: 'ngx-bootstrap',
         loadChildren: 'app/admin/ngx-bootstrap/ngx-bootstrap.module#NgxBootstrapModule' // Lazy loading
