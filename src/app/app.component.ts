@@ -9,7 +9,7 @@ import { CoreService } from './core/core.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Ng2-app';
+  title = 'ngx-app';
 
   constructor(angulartics2GoogleTagManager: Angulartics2GoogleTagManager, coreService: CoreService) {
     coreService.loadScripts();

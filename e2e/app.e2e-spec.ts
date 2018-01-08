@@ -1,6 +1,6 @@
 import { Ng2AppPage } from './app.po';
 
-describe('ng2-app App', () => {
+describe('ngx-app App', () => {
   let page: Ng2AppPage;
 
   beforeEach(() => {
